@@ -1,0 +1,40 @@
+[2026-06-26 13:32:32] System initialization.
+[2026-06-26 13:32:32] Sensor C failure: Hardware fault in Sensor C
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
+[2026-06-26 13:32:32] Sensor B failure: Hardware fault in Sensor B
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
+[2026-06-26 13:32:32] Sensor C corrupted reading: -27
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
+[2026-06-26 13:32:32] Sensor B corrupted reading: -33
+[2026-06-26 13:32:32] Sensor C corrupted reading: -6
+[2026-06-26 13:32:32] Reliability failure: Insufficient valid sensors.
+[2026-06-26 13:32:32] Sensor A corrupted reading: -32
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
+[2026-06-26 13:32:32] Sensor B corrupted reading: -31
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
+[2026-06-26 13:32:32] Majority decision: 101m
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 101m
+[2026-06-26 13:32:32] Sensor A corrupted reading: -44
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 101m
+[2026-06-26 13:32:32] Sensor C failure: Hardware fault in Sensor C
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 101m
+[2026-06-26 13:32:32] Majority decision: 109m
+[2026-06-26 13:32:32] Sensor A corrupted reading: -2
+[2026-06-26 13:32:32] Sensor B corrupted reading: -35
+[2026-06-26 13:32:32] Sensor C failure: Hardware fault in Sensor C
+[2026-06-26 13:32:32] Reliability failure: Insufficient valid sensors.
+[2026-06-26 13:32:32] Sensor A corrupted reading: -2
+[2026-06-26 13:32:32] Sensor B corrupted reading: -20
+[2026-06-26 13:32:32] Reliability failure: Insufficient valid sensors.
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 109m
+[2026-06-26 13:32:32] No majority found. Fallback to previous: 109m
+[2026-06-26 13:32:32] Sensor A corrupted reading: -43
+[2026-06-26 13:32:32] Sensor C failure: Hardware fault in Sensor C
+[2026-06-26 13:32:32] Reliability failure: Insufficient valid sensors.
+[2026-06-26 13:32:32] Sensor A failure: Hardware fault in Sensor A
+[2026-06-26 13:32:32] Sensor B failure: Hardware fault in Sensor B
+[2026-06-26 13:32:32] Sensor C corrupted reading: -18
+[2026-06-26 13:32:32] Reliability failure: Insufficient valid sensors.
