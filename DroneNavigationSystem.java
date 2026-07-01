@@ -100,7 +100,19 @@ public class DroneNavigationSystem {
         if (result != null) {
             lastValidAltitude = result;
             System.out.println("Majority Decision: " + result + "m");
-            log(logger, "Majority decision: " + result + "m");
+            
+            // Outlier Detection
+            StringBuilder outliers = new StringBuilder();
+            for (int i = 0; i < 3; i++) {
+                if (valid[i] && readings[i] != result) {
+                    outliers.append(sensorIds[i]).append(" ");
+                }
+            }
+            String outlierMsg = outliers.length() > 0 ? " [Outliers: " + outliers.toString().trim() + "]" : "";
+            if (!outlierMsg.isEmpty()) {
+                System.out.println("Outlier detected: " + outliers.toString().trim());
+            }
+            log(logger, "Majority decision: " + result + "m" + outlierMsg);
         } else {
             consecutiveFailures++;
             if (validCount >= 2) {
