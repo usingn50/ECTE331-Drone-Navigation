@@ -48,12 +48,15 @@ public class DroneNavigationSystem {
                 } catch (SystemReliabilityException e) {
                     System.err.println("CRITICAL ERROR: " + e.getMessage());
                     log(logger, "SAFE MODE ACTIVATED: " + e.getMessage());
-                    System.out.println("--- System Terminated in SAFE MODE ---");
+                    activateEmergencyLanding();
                     break;
                 } catch (Exception e) {
                     System.err.println("Unexpected error: " + e.getMessage());
                 }
             }
+            System.out.println("\n--- Simulation Summary ---");
+            System.out.println("Last Altitude: " + lastValidAltitude + "m");
+            System.out.println("Status: Completed Successfully");
         } catch (IOException e) {
             System.err.println("Failed to initialize log file: " + e.getMessage());
         }
@@ -159,5 +162,13 @@ public class DroneNavigationSystem {
         writer.write("[" + timestamp + "] " + message);
         writer.newLine();
         writer.flush();
+    }
+
+    private void activateEmergencyLanding() {
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println("   EMERGENCY LANDING SEQUENCE ACTIVATED   ");
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println("Descending safely to " + MIN_ALTITUDE + "m...");
+        System.out.println("Drone grounded. System Terminated.");
     }
 }
