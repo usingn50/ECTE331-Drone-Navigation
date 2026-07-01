@@ -15,6 +15,7 @@ public class DroneNavigationSystem {
     private static final String LOG_FILE = "log.txt";
     private static final int FAULT_CHANCE_PERCENT = 15;
     private static final int CORRUPTION_CHANCE_PERCENT = 30;
+    private static final int VOTING_TOLERANCE = 2; // Tolerance in meters for voting
     
     private int lastValidAltitude = 0;
     private int consecutiveFailures = 0;
@@ -139,10 +140,13 @@ public class DroneNavigationSystem {
 
         if (validCount < 2) return null;
 
-        // Check for majority among valid readings
-        if (valid[0] && valid[1] && readings[0] == readings[1]) return readings[0];
-        if (valid[0] && valid[2] && readings[0] == readings[2]) return readings[0];
-        if (valid[1] && valid[2] && readings[1] == readings[2]) return readings[1];
+        // Check for majority among valid readings with tolerance
+        if (valid[0] && valid[1] && Math.abs(readings[0] - readings[1]) <= VOTING_TOLERANCE) 
+            return (readings[0] + readings[1]) / 2;
+        if (valid[0] && valid[2] && Math.abs(readings[0] - readings[2]) <= VOTING_TOLERANCE) 
+            return (readings[0] + readings[2]) / 2;
+        if (valid[1] && valid[2] && Math.abs(readings[1] - readings[2]) <= VOTING_TOLERANCE) 
+            return (readings[1] + readings[2]) / 2;
 
         return null; // No majority
     }
