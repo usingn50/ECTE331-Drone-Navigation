@@ -13,6 +13,8 @@ public class DroneNavigationSystem {
     private static final int MIN_ALTITUDE = 0;
     private static final int MAX_ALTITUDE = 200;
     private static final String LOG_FILE = "log.txt";
+    private static final int FAULT_CHANCE_PERCENT = 15;
+    private static final int CORRUPTION_CHANCE_PERCENT = 30;
     
     private int lastValidAltitude = 0;
     private int consecutiveFailures = 0;
@@ -31,7 +33,9 @@ public class DroneNavigationSystem {
      * Main simulation loop.
      */
     public void runSimulation() {
-        System.out.println("--- Drone Navigation System Started ---");
+        System.out.println("==========================================");
+        System.out.println("   Drone Navigation System Initialized    ");
+        System.out.println("==========================================");
         try (BufferedWriter logger = new BufferedWriter(new FileWriter(LOG_FILE, true))) {
             log(logger, "System initialization.");
 
@@ -117,9 +121,9 @@ public class DroneNavigationSystem {
         int chance = random.nextInt(100);
         int baseline = 100;
 
-        if (chance < 15) {
+        if (chance < FAULT_CHANCE_PERCENT) {
             throw new SensorReadException("Hardware fault in " + id);
-        } else if (chance < 30) {
+        } else if (chance < CORRUPTION_CHANCE_PERCENT) {
             return -50 + random.nextInt(50); // Corrupted: outside [0:200]
         } else {
             return baseline + random.nextInt(10); // Valid
