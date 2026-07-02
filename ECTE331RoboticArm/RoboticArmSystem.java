@@ -14,6 +14,8 @@ public class RoboticArmSystem {
         SafetyMonitor safetyMonitor = new SafetyMonitor(motorController);
         MotionPlanner motionPlanner = new MotionPlanner(motorController);
         LowPriorityTask lowPriorityTask = new LowPriorityTask(motorController);
+        // Set a ceiling priority for the resource, for example, NORM_PRIORITY + 1
+        motorController.setCeilingPriority(Thread.NORM_PRIORITY + 1);
         MediumPriorityTask mediumPriorityTask = new MediumPriorityTask();
 
         // Start threads
@@ -27,6 +29,9 @@ public class RoboticArmSystem {
             Thread.sleep(100); // Allow low priority task to acquire resource
             mediumPriorityTask.start(); // Medium priority task starts
             Thread.sleep(200); // Allow medium priority task to run and preempt low priority
+            // In Priority Ceiling, the low priority task's priority is boosted to the ceiling priority
+            // of the resource it holds, preventing medium priority tasks from preempting it.
+            // The SafetyMonitor (high priority) will still request the resource.
             safetyMonitor.triggerEmergency(); // High priority task tries to acquire resource
             Thread.sleep(2000); // Wait for simulation to complete
         } catch (InterruptedException e) {

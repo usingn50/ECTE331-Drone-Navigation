@@ -22,6 +22,7 @@ public class SafetyMonitor extends Thread {
                 if (emergencyDetected) {
                     System.out.println(System.currentTimeMillis() + " - " + getName() + ": EMERGENCY DETECTED! Stopping arm.");
                     System.out.println(System.currentTimeMillis() + " - " + getName() + ": Attempting to acquire MotorController to stop arm.");
+                    motorController.requestResource(Thread.currentThread()); // Request resource to trigger priority inheritance
                     motorController.moveArm(getName(), motorController.getCurrentPosition()); // Stop arm at current position
                     break;
                 }
