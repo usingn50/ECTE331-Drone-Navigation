@@ -1,7 +1,6 @@
 package ECTE331RoboticArm;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+
 
 /**
  * Shared resource representing the robotic arm's motor controller.
@@ -9,10 +8,9 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class MotorController {
     private int currentPosition = 0;
-    private final Lock lock = new ReentrantLock();
 
-    public void moveArm(String threadName, int newPosition) {
-        lock.lock();
+
+    public synchronized void moveArm(String threadName, int newPosition) {
         try {
             System.out.println(System.currentTimeMillis() + " - " + threadName + " acquired MotorController. Current Position: " + currentPosition);
             // Simulate arm movement
@@ -22,10 +20,16 @@ public class MotorController {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             System.err.println(threadName + " interrupted while moving arm.");
-        } finally {
-            lock.unlock();
-            System.out.println(System.currentTimeMillis() + " - " + threadName + " released MotorController.");
         }
+        System.out.println(System.currentTimeMillis() + " - " + threadName + " released MotorController.");
+    }
+
+    public synchronized void acquireResource(String threadName) {
+        System.out.println(System.currentTimeMillis() + " - " + threadName + ": Acquired MotorController resource.");
+    }
+
+    public synchronized void releaseResource(String threadName) {
+        System.out.println(System.currentTimeMillis() + " - " + threadName + ": Released MotorController resource.");
     }
 
     public int getCurrentPosition() {

@@ -21,6 +21,7 @@ public class SafetyMonitor extends Thread {
                 Thread.sleep(10);
                 if (emergencyDetected) {
                     System.out.println(System.currentTimeMillis() + " - " + getName() + ": EMERGENCY DETECTED! Stopping arm.");
+                    System.out.println(System.currentTimeMillis() + " - " + getName() + ": Attempting to acquire MotorController to stop arm.");
                     motorController.moveArm(getName(), motorController.getCurrentPosition()); // Stop arm at current position
                     break;
                 }
