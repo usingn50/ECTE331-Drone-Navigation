@@ -1,0 +1,7 @@
+# Compiled Java classes
+*.class
+
+# Generated log files (regenerated on every run)
+log*.txt
+robotic_arm_log.txt
+performance_evaluation_log.txt

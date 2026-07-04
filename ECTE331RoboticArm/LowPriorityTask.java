@@ -1,44 +1,32 @@
 package ECTE331RoboticArm;
 
 /**
- * Low-priority thread that acquires the MotorController and simulates work,
- * potentially causing priority inversion.
+ * Dedicated low-priority thread for the controlled priority-inversion
+ * scenario (Tasks 3-6). Acquires the shared resource and holds it for a
+ * fixed duration, representing the classic "low-priority task holding a
+ * resource needed by a high-priority task" setup.
  */
 public class LowPriorityTask extends Thread {
-    private MotorController motorController;
-    private volatile boolean holdingResource = false;
 
-    public LowPriorityTask(MotorController controller) {
-        this.motorController = controller;
-        setName("LowPriorityTask");
-        setPriority(Thread.MIN_PRIORITY); // Low Priority
+    private final MotorController controller;
+    private final EventLog log;
+    private final long holdMillis;
+
+    public LowPriorityTask(MotorController controller, EventLog log, long holdMillis) {
+        this.controller = controller;
+        this.log = log;
+        this.holdMillis = holdMillis;
+        setName("LowPriorityTask(Low)");
+        setPriority(Thread.MIN_PRIORITY);
     }
 
     @Override
     public void run() {
-        System.out.println(System.currentTimeMillis() + " - " + getName() + ": Starting.");
         try {
-            // Simulate some initial work
-            Thread.sleep(50);
-
-            System.out.println(System.currentTimeMillis() + " - " + getName() + ": Attempting to acquire MotorController.");
-            motorController.acquireResource(getName());
-            holdingResource = true;
-            System.out.println(System.currentTimeMillis() + " - " + getName() + ": Acquired MotorController. Holding for a while.");
-
-            // Simulate holding the resource for a long time
-            Thread.sleep(500); 
-
+            log.log(getName() + " attempting to acquire MotorController");
+            controller.access(getName(), 42, holdMillis);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            System.out.println(System.currentTimeMillis() + " - " + getName() + ": Interrupted.");
-        } finally {
-            if (holdingResource) {
-                motorController.releaseResource(getName());
-                holdingResource = false;
-                System.out.println(System.currentTimeMillis() + " - " + getName() + ": Released MotorController.");
-            }
-            System.out.println(System.currentTimeMillis() + " - " + getName() + ": Finished.");
         }
     }
 }

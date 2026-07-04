@@ -1,29 +1,39 @@
 package ECTE331RoboticArm;
 
 /**
- * Medium-priority thread that plans and sends movement commands to the motor controller.
+ * Medium-priority real-time thread used in the basic multi-threaded demo
+ * (Tasks 1-2). Repeatedly plans a new arm position and sends it to the
+ * shared {@link MotorController}.
  */
 public class MotionPlanner extends Thread {
-    private MotorController motorController;
 
-    public MotionPlanner(MotorController controller) {
-        this.motorController = controller;
-        setName("MotionPlanner");
-        setPriority(Thread.NORM_PRIORITY); // Medium Priority
+    private final MotorController controller;
+    private final EventLog log;
+    private volatile boolean running = true;
+
+    public MotionPlanner(MotorController controller, EventLog log) {
+        this.controller = controller;
+        this.log = log;
+        setName("MotionPlanner(Medium)");
+        setPriority(Thread.NORM_PRIORITY);
+    }
+
+    public void stopRunning() {
+        running = false;
+        interrupt();
     }
 
     @Override
     public void run() {
-        while (!Thread.currentThread().isInterrupted()) {
+        int position = 0;
+        while (running && !Thread.currentThread().isInterrupted()) {
             try {
-                // Simulate planning a new position
-                int newPosition = (int) (Math.random() * 100);
-                System.out.println(System.currentTimeMillis() + " - " + getName() + ": Planning to move to " + newPosition);
-                motorController.moveArm(getName(), newPosition);
-                Thread.sleep(100); // Simulate work after moving
+                position = (position + 10) % 100;
+                controller.access(getName(), position, 60);
+                Thread.sleep(80);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                System.out.println(System.currentTimeMillis() + " - " + getName() + ": Interrupted.");
+                break;
             }
         }
     }

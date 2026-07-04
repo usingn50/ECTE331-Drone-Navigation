@@ -1,48 +1,52 @@
 # ECTE331 - مشاريع أنظمة التشغيل
 
-يحتوي هذا المستودع على مشاريع متعددة تم تطويرها كجزء من مقرر ECTE331 (أنظمة التشغيل)، مع التركيز على مفاهيم المزامنة، إدارة الموارد، وجدولة المهام في بيئات متعددة الخيوط.
-
-تم تقسيم العمل إلى مراحل (commits) واضحة لتتبع التقدم في كل جزء من المشروع.
+يحتوي هذا المستودع على مشاريع متعددة تم تطويرها كجزء من مقرر ECTE331 (أنظمة التشغيل / الأنظمة المدمجة)، مع التركيز على التحمل من الأعطال، إدارة الموارد المشتركة، ومزامنة الخيوط في بيئات متعددة الخيوط.
 
 ## 1. مشروع نظام الملاحة للطائرات بدون طيار (Drone Navigation System)
 
 **الملف الرئيسي:** `DroneNavigationSystem.java`
+**الاستثناءات المخصصة:** `SensorReadException.java`, `SystemReliabilityException.java`
 
-يتناول هذا المشروع محاكاة نظام ملاحة لطائرة بدون طيار، مع التركيز على دمج البيانات من حساسات متعددة واتخاذ قرارات الملاحة. تم تطويره على ثلاث مراحل رئيسية:
+يحاكي هذا المشروع نظام ملاحة لطائرة بدون طيار يعتمد على تقنية التكرار الثلاثي (Triple Modular Redundancy - TMR) لتحديد الارتفاع باستخدام ثلاثة حساسات، مع:
 
-*   **المرحلة الأولى:** تحسين تنسيق مخرجات الكونسول واستخدام الثوابت لزيادة قابلية القراءة والصيانة.
-*   **المرحلة الثانية:** تطبيق منطق اكتشاف القيم الشاذة (Outlier Detection) في قراءات الحساسات وتحسين تسجيل السجلات (logging) لتحديد الحساسات التي تنتج قيمًا شاذة.
-*   **المرحلة الثالثة:** إضافة ميزة الهبوط الاضطراري عند اكتشاف أعطال حرجة في النظام، مع توفير ملخص نهائي للمحاكاة.
+- محاكاة فشل/تلف/صحة القراءات حسب نسب عشوائية محددة
+- تصويت الأغلبية (Majority Voting) لتحديد القراءة النهائية
+- الرجوع للقيمة السابقة (Fallback) عند تعارض جميع القراءات
+- الدخول في وضع السلامة (SAFE MODE) عند فشلين متتاليين في الموثوقية
+- تسجيل كل الأحداث المهمة في ملف `log.txt`
 
 ## 2. مشروع نظام التحكم بالذراع الروبوتية (Robotic Arm Control System)
 
 **المجلد:** `ECTE331RoboticArm`
-**الملف الرئيسي:** `ECTE331RoboticArm/RoboticArmSystem.java`
 
-يركز هذا المشروع على محاكاة نظام تحكم بذراع روبوتية باستخدام خيوط متعددة وموارد مشتركة، مع استكشاف تحديات المزامنة مثل انعكاس الأولوية (Priority Inversion) وحلولها مثل وراثة الأولوية (Priority Inheritance) وسقف الأولوية (Priority Ceiling).
+يحاكي هذا المشروع نظام تحكم بذراع روبوتية بثلاثة خيوط ذات أولويات مختلفة (High: `SafetyMonitor`, Medium: `MotionPlanner`, Low: `Logger`) تتشارك موردًا واحدًا (`MotorController`)، ويغطي المتطلبات الستة كاملة:
 
-*   **المرحلة الأولى:** تنفيذ الأساس متعدد الخيوط مع مورد مشترك (MotorController) وآليات مزامنة أساسية.
-*   **المرحلة الثانية:** إظهار سيناريو انعكاس الأولوية (Priority Inversion) ومحاكاة وراثة الأولوية (Priority Inheritance) لحل المشكلة.
-*   **المرحلة الثالثة:** تنفيذ سقف الأولوية (Priority Ceiling) كحل آخر لانعكاس الأولوية وتقييم الأداء.
+| Task | الملفات | الوصف |
+|---|---|---|
+| 1-2 | `RoboticArmSystem.java` | تنفيذ أساسي متعدد الخيوط مع إقصاء متبادل (mutual exclusion) على المورد المشترك |
+| 3 | `PriorityInversionDemo.java`, `LowPriorityTask.java`, `MediumPriorityTask.java` | سيناريو متحكَّم فيه يُظهر انعكاس الأولوية (Priority Inversion) بشكل قابل لإعادة الإنتاج |
+| 4 | `MotorController.java` (`PriorityMode.INHERITANCE`) | محاكاة وراثة الأولوية (Priority Inheritance) |
+| 5 | `MotorController.java` (`PriorityMode.CEILING`) | تنفيذ بروتوكول سقف الأولوية (Priority Ceiling) |
+| 6 | `PerformanceEvaluator.java`, `performance_results.csv`, `performance_chart.png`, `Report_Task6_Performance.md` | تقييم أداء الاستراتيجيات الثلاث على 20 تجربة، مع جداول ورسم بياني |
+
+**ملاحظة منهجية:** بما أن أولويات الخيوط في Java تُعامَل كـ"تلميح" للـ JVM/نظام التشغيل وليست ضمانًا حقيقيًا للجدولة الفورية على أنظمة التشغيل العامة، فقد تم تصميم آلية "تداخل" (`setMediumInterfering`) داخل `MotorController` لمحاكاة تأثير انعكاس الأولوية بشكل حتمي وقابل لإعادة الإنتاج على أي جهاز، بدل الاعتماد الكامل على سلوك المجدول الفعلي — راجع Javadoc الخاص بـ `MotorController` للتفاصيل.
 
 ## 3. مشروع مزامنة الخيوط والاتصال (Threads Synchronisation and Communication)
 
 **المجلد:** `ECTE331ThreadsSynchronisation`
 
-يتناول هذا المشروع مفاهيم متقدمة في مزامنة الخيوط والاتصال بينها باستخدام Java، مع التركيز على حلول لمشاكل كلاسيكية في أنظمة التشغيل.
+يحل هذا المشروع "Problem 2" من المقرر: خيطان (A وB) بترتيب تنفيذ محدد بين ست دوال (FuncA1-3, FuncB1-3) تتشارك ست متغيرات، بدون استخدام busy-wait أو `Thread.sleep()` لفرض الترتيب.
 
-*   **المرحلة الأولى:** تنفيذ مشكلة المنتج-المستهلك (Producer-Consumer Problem) باستخدام كل من `synchronized` و `wait()`/`notifyAll()`، وكذلك باستخدام `ReentrantLock` و `Condition`. بالإضافة إلى تنفيذ مشكلة القارئ-الكاتب (Reader-Writer Problem) باستخدام `ReentrantReadWriteLock`.
-
-## التوثيق
-
-تم توليد توثيق JavaDoc لكل من مشروع نظام الملاحة ومشروع مزامنة الخيوط. يمكن العثور على التوثيق في المجلدات التالية:
-
-*   `docs/DroneNavigationSystem`
-*   `docs/ECTE331ThreadsSynchronisation`
+- `SumUtil.java` — دالة مساعدة لحساب المجموع باستخدام حلقة تكرار
+- `SyncEvent.java` — بوابة مزامنة أحادية الاستخدام مبنية على `synchronized`/`wait()`/`notifyAll()`
+- `SharedState.java` — يحمل المتغيرات المشتركة وأحداث المزامنة الأربعة
+- `ThreadA.java`, `ThreadB.java` — تنفيذ الخيطين حسب ترتيب الاعتماد في Figure 2.1
+- `ThreadSyncApp.java` — تشغيل توضيحي + اختبار صحة على 100,000 تكرار متتالي
+- `Report_Part2.md` — تقرير كامل يشرح الحل الرياضي وتصميم المزامنة ونتائج الاختبار
 
 ## كيفية التشغيل
 
-للتشغيل، تأكد من تثبيت Java Development Kit (JDK).
+للتشغيل، تأكد من تثبيت Java Development Kit (JDK 17 أو أحدث).
 
 1.  **استنساخ المستودع:**
     ```bash
@@ -50,24 +54,27 @@
     cd ECTE331-Drone-Navigation
     ```
 
-2.  **تجميع وتشغيل مشروع نظام الملاحة للطائرات بدون طيار:**
+2.  **مشروع نظام الملاحة للطائرات بدون طيار:**
     ```bash
-    javac DroneNavigationSystem.java SensorReading.java
+    javac DroneNavigationSystem.java SensorReadException.java SystemReliabilityException.java
     java DroneNavigationSystem
     ```
 
-3.  **تجميع وتشغيل مشروع نظام التحكم بالذراع الروبوتية:**
+3.  **مشروع نظام التحكم بالذراع الروبوتية:**
     ```bash
     javac ECTE331RoboticArm/*.java
-    java -cp . ECTE331RoboticArm.RoboticArmSystem
+    java -cp . ECTE331RoboticArm.RoboticArmSystem        # Task 1-2: العرض الأساسي
+    java -cp . ECTE331RoboticArm.PriorityInversionDemo    # Task 3-5: عرض انعكاس الأولوية والحلول
+    java -cp . ECTE331RoboticArm.PerformanceEvaluator 20  # Task 6: تقييم الأداء (20 تجربة)
     ```
 
-4.  **تجميع وتشغيل مشروع مزامنة الخيوط والاتصال:**
+4.  **مشروع مزامنة الخيوط والاتصال:**
     ```bash
-    javac ECTE331ThreadsSynchronisation/*.java
-    java -cp . ECTE331ThreadsSynchronisation.ProducerConsumerSync
-    java -cp . ECTE331ThreadsSynchronisation.ProducerConsumerLock
-    java -cp . ECTE331ThreadsSynchronisation.ReaderWriterProblem
+    cd ECTE331ThreadsSynchronisation
+    javac *.java
+    java ThreadSyncApp
     ```
 
----
+## التوثيق
+
+يوجد توثيق JavaDoc لمشروع نظام الملاحة في `docs/DroneNavigationSystem`. تقارير كل جزء موجودة كملفات Markdown داخل مجلد كل مشروع.

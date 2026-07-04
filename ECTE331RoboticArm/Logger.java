@@ -1,54 +1,40 @@
 package ECTE331RoboticArm;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
- * Low-priority thread that records system activity to a log file.
+ * Low-priority real-time thread used in the basic multi-threaded demo
+ * (Tasks 1-2). Periodically records the arm's current position, occasionally
+ * accessing the shared {@link MotorController} to satisfy the requirement
+ * that all real-time threads use the shared resource.
  */
 public class Logger extends Thread {
-    private static final String LOG_FILE = "robotic_arm_log.txt";
-    private PrintWriter writer;
-    private MotorController motorController;
 
-    public Logger(MotorController controller) {
-        this.motorController = controller;
-        setName("Logger");
-        setPriority(Thread.MIN_PRIORITY); // Low Priority
-        try {
-            writer = new PrintWriter(new FileWriter(LOG_FILE, true));
-        } catch (IOException e) {
-            System.err.println("Failed to initialize logger: " + e.getMessage());
-        }
+    private final MotorController controller;
+    private final EventLog log;
+    private volatile boolean running = true;
+
+    public Logger(MotorController controller, EventLog log) {
+        this.controller = controller;
+        this.log = log;
+        setName("Logger(Low)");
+        setPriority(Thread.MIN_PRIORITY);
+    }
+
+    public void stopRunning() {
+        running = false;
+        interrupt();
     }
 
     @Override
     public void run() {
-        while (!Thread.currentThread().isInterrupted()) {
+        while (running && !Thread.currentThread().isInterrupted()) {
             try {
-                // Simulate logging activity
-                Thread.sleep(200); // Log every 200ms
-                log("System heartbeat - Motor position: " + motorController.getCurrentPosition());
+                log.log(getName() + " heartbeat, last known position=" + controller.getCurrentPosition());
+                controller.access(getName(), controller.getCurrentPosition(), 20);
+                Thread.sleep(150);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                System.out.println(System.currentTimeMillis() + " - " + getName() + ": Interrupted.");
-            } catch (Exception e) {
-                System.err.println("Logger error: " + e.getMessage());
+                break;
             }
-        }
-        if (writer != null) {
-            writer.close();
-        }
-    }
-
-    public synchronized void log(String message) {
-        if (writer != null) {
-            String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
-            writer.println("[" + timestamp + "] " + message);
-            writer.flush();
         }
     }
 }
