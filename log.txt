@@ -1,40 +1,241 @@
-[2026-06-26 13:32:32] System initialization.
-[2026-06-26 13:32:32] Sensor C failure: Hardware fault in Sensor C
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
-[2026-06-26 13:32:32] Sensor B failure: Hardware fault in Sensor B
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
-[2026-06-26 13:32:32] Sensor C corrupted reading: -27
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
-[2026-06-26 13:32:32] Sensor B corrupted reading: -33
-[2026-06-26 13:32:32] Sensor C corrupted reading: -6
-[2026-06-26 13:32:32] Reliability failure: Insufficient valid sensors.
-[2026-06-26 13:32:32] Sensor A corrupted reading: -32
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
-[2026-06-26 13:32:32] Sensor B corrupted reading: -31
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 0m
-[2026-06-26 13:32:32] Majority decision: 101m
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 101m
-[2026-06-26 13:32:32] Sensor A corrupted reading: -44
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 101m
-[2026-06-26 13:32:32] Sensor C failure: Hardware fault in Sensor C
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 101m
-[2026-06-26 13:32:32] Majority decision: 109m
-[2026-06-26 13:32:32] Sensor A corrupted reading: -2
-[2026-06-26 13:32:32] Sensor B corrupted reading: -35
-[2026-06-26 13:32:32] Sensor C failure: Hardware fault in Sensor C
-[2026-06-26 13:32:32] Reliability failure: Insufficient valid sensors.
-[2026-06-26 13:32:32] Sensor A corrupted reading: -2
-[2026-06-26 13:32:32] Sensor B corrupted reading: -20
-[2026-06-26 13:32:32] Reliability failure: Insufficient valid sensors.
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 109m
-[2026-06-26 13:32:32] No majority found. Fallback to previous: 109m
-[2026-06-26 13:32:32] Sensor A corrupted reading: -43
-[2026-06-26 13:32:32] Sensor C failure: Hardware fault in Sensor C
-[2026-06-26 13:32:32] Reliability failure: Insufficient valid sensors.
-[2026-06-26 13:32:32] Sensor A failure: Hardware fault in Sensor A
-[2026-06-26 13:32:32] Sensor B failure: Hardware fault in Sensor B
-[2026-06-26 13:32:32] Sensor C corrupted reading: -18
-[2026-06-26 13:32:32] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:07] System initialization.
+[2026-07-04 13:25:07] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:07] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:07] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:07] System initialization.
+[2026-07-04 13:25:07] Sensor B failure: Hardware fault in Sensor B
+[2026-07-04 13:25:07] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:07] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:07] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:07] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:07] System initialization.
+[2026-07-04 13:25:07] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:07] Sensor A corrupted reading: -20
+[2026-07-04 13:25:07] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:07] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:07] System initialization.
+[2026-07-04 13:25:07] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:07] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:07] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:07] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:07] System initialization.
+[2026-07-04 13:25:07] Sensor B corrupted reading: -12
+[2026-07-04 13:25:07] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:07] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:07] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:07] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:24] System initialization.
+[2026-07-04 13:25:24] Sensor C corrupted reading: -21
+[2026-07-04 13:25:24] Majority decision: 106m
+[2026-07-04 13:25:24] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:24] No majority found. Fallback to previous: 106m
+[2026-07-04 13:25:24] No majority found. Fallback to previous: 106m
+[2026-07-04 13:25:24] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:24] System initialization.
+[2026-07-04 13:25:25] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:25] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:25] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:25] System initialization.
+[2026-07-04 13:25:25] Sensor B corrupted reading: -5
+[2026-07-04 13:25:25] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:25] Sensor B corrupted reading: -23
+[2026-07-04 13:25:25] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:25] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:25] System initialization.
+[2026-07-04 13:25:25] Sensor A corrupted reading: -46
+[2026-07-04 13:25:25] Majority decision: 109m
+[2026-07-04 13:25:25] Sensor B failure: Hardware fault in Sensor B
+[2026-07-04 13:25:25] No majority found. Fallback to previous: 109m
+[2026-07-04 13:25:25] Sensor B failure: Hardware fault in Sensor B
+[2026-07-04 13:25:25] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:25] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:25] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:25] System initialization.
+[2026-07-04 13:25:25] Majority decision: 108m [Outliers: Sensor B]
+[2026-07-04 13:25:25] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:25] No majority found. Fallback to previous: 108m
+[2026-07-04 13:25:25] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:25] Sensor B failure: Hardware fault in Sensor B
+[2026-07-04 13:25:25] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:25] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:25] System initialization.
+[2026-07-04 13:25:25] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:25] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:25] Sensor B corrupted reading: -49
+[2026-07-04 13:25:25] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:25] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:25] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:25] System initialization.
+[2026-07-04 13:25:25] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:25] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:25] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:26] System initialization.
+[2026-07-04 13:25:26] Majority decision: 108m [Outliers: Sensor B]
+[2026-07-04 13:25:26] Sensor B failure: Hardware fault in Sensor B
+[2026-07-04 13:25:26] Majority decision: 108m
+[2026-07-04 13:25:26] Majority decision: 107m [Outliers: Sensor C]
+[2026-07-04 13:25:26] Sensor B corrupted reading: -10
+[2026-07-04 13:25:26] No majority found. Fallback to previous: 107m
+[2026-07-04 13:25:26] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:26] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:26] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:26] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:26] System initialization.
+[2026-07-04 13:25:26] Sensor C corrupted reading: -38
+[2026-07-04 13:25:26] Majority decision: 100m
+[2026-07-04 13:25:26] Sensor B corrupted reading: -15
+[2026-07-04 13:25:26] No majority found. Fallback to previous: 100m
+[2026-07-04 13:25:26] Sensor C corrupted reading: -27
+[2026-07-04 13:25:26] No majority found. Fallback to previous: 100m
+[2026-07-04 13:25:26] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:26] System initialization.
+[2026-07-04 13:25:26] Majority decision: 103m [Outliers: Sensor B]
+[2026-07-04 13:25:26] Sensor A corrupted reading: -33
+[2026-07-04 13:25:26] Sensor B corrupted reading: -22
+[2026-07-04 13:25:26] Sensor C corrupted reading: -34
+[2026-07-04 13:25:26] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:26] Majority decision: 105m [Outliers: Sensor C]
+[2026-07-04 13:25:26] No majority found. Fallback to previous: 105m
+[2026-07-04 13:25:26] Majority decision: 107m [Outliers: Sensor C]
+[2026-07-04 13:25:26] No majority found. Fallback to previous: 107m
+[2026-07-04 13:25:26] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:26] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:26] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:26] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:26] System initialization.
+[2026-07-04 13:25:26] Sensor A corrupted reading: -14
+[2026-07-04 13:25:26] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:26] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:26] Sensor B corrupted reading: -8
+[2026-07-04 13:25:26] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:26] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:26] System initialization.
+[2026-07-04 13:25:26] Majority decision: 103m [Outliers: Sensor B]
+[2026-07-04 13:25:26] Majority decision: 104m [Outliers: Sensor B]
+[2026-07-04 13:25:26] Sensor B failure: Hardware fault in Sensor B
+[2026-07-04 13:25:26] No majority found. Fallback to previous: 104m
+[2026-07-04 13:25:26] Sensor A corrupted reading: -46
+[2026-07-04 13:25:26] Sensor B corrupted reading: -8
+[2026-07-04 13:25:26] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:26] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:26] System initialization.
+[2026-07-04 13:25:26] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:26] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:26] Sensor B failure: Hardware fault in Sensor B
+[2026-07-04 13:25:26] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:26] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:27] System initialization.
+[2026-07-04 13:25:27] Sensor A corrupted reading: -23
+[2026-07-04 13:25:27] Sensor B failure: Hardware fault in Sensor B
+[2026-07-04 13:25:27] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:27] Sensor A corrupted reading: -23
+[2026-07-04 13:25:27] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:27] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:27] System initialization.
+[2026-07-04 13:25:27] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:27] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:27] Sensor B failure: Hardware fault in Sensor B
+[2026-07-04 13:25:27] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:27] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:27] System initialization.
+[2026-07-04 13:25:27] Sensor B failure: Hardware fault in Sensor B
+[2026-07-04 13:25:27] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:27] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:27] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:27] System initialization.
+[2026-07-04 13:25:27] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:27] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:27] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:27] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:27] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:27] System initialization.
+[2026-07-04 13:25:27] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:27] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:27] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:27] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:27] System initialization.
+[2026-07-04 13:25:27] Sensor C corrupted reading: -20
+[2026-07-04 13:25:27] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:27] Sensor A corrupted reading: -11
+[2026-07-04 13:25:27] Sensor C corrupted reading: -32
+[2026-07-04 13:25:27] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:27] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:28] System initialization.
+[2026-07-04 13:25:28] Majority decision: 105m
+[2026-07-04 13:25:28] Sensor A corrupted reading: -3
+[2026-07-04 13:25:28] Sensor B corrupted reading: -26
+[2026-07-04 13:25:28] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:28] No majority found. Fallback to previous: 105m
+[2026-07-04 13:25:28] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:28] System initialization.
+[2026-07-04 13:25:28] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:28] Sensor B corrupted reading: -19
+[2026-07-04 13:25:28] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:28] Sensor B corrupted reading: -14
+[2026-07-04 13:25:28] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:28] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:28] System initialization.
+[2026-07-04 13:25:28] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:28] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:28] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:28] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:28] System initialization.
+[2026-07-04 13:25:28] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:28] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:28] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:28] Sensor B corrupted reading: -15
+[2026-07-04 13:25:28] Sensor C corrupted reading: -13
+[2026-07-04 13:25:28] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:28] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:28] System initialization.
+[2026-07-04 13:25:28] Sensor A corrupted reading: -13
+[2026-07-04 13:25:28] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:28] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:28] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:28] System initialization.
+[2026-07-04 13:25:28] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:28] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:28] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:28] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:29] System initialization.
+[2026-07-04 13:25:29] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:29] Majority decision: 109m [Outliers: Sensor C]
+[2026-07-04 13:25:29] No majority found. Fallback to previous: 109m
+[2026-07-04 13:25:29] Majority decision: 100m
+[2026-07-04 13:25:29] No majority found. Fallback to previous: 100m
+[2026-07-04 13:25:29] Majority decision: 108m [Outliers: Sensor B]
+[2026-07-04 13:25:29] Majority decision: 106m [Outliers: Sensor A]
+[2026-07-04 13:25:29] Sensor B corrupted reading: -19
+[2026-07-04 13:25:29] No majority found. Fallback to previous: 106m
+[2026-07-04 13:25:29] Sensor C corrupted reading: -39
+[2026-07-04 13:25:29] Majority decision: 108m
+[2026-07-04 13:25:29] Sensor A corrupted reading: -41
+[2026-07-04 13:25:29] Sensor B corrupted reading: -13
+[2026-07-04 13:25:29] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:29] Sensor C corrupted reading: -46
+[2026-07-04 13:25:29] No majority found. Fallback to previous: 108m
+[2026-07-04 13:25:29] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:29] System initialization.
+[2026-07-04 13:25:29] Sensor B failure: Hardware fault in Sensor B
+[2026-07-04 13:25:29] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:29] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:29] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:29] System initialization.
+[2026-07-04 13:25:29] Sensor B corrupted reading: -47
+[2026-07-04 13:25:29] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:29] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:29] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:29] System initialization.
+[2026-07-04 13:25:29] No majority found. Fallback to previous: 0m
+[2026-07-04 13:25:29] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:29] Sensor B corrupted reading: -14
+[2026-07-04 13:25:29] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:29] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.
+[2026-07-04 13:25:29] System initialization.
+[2026-07-04 13:25:29] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:29] Majority decision: 100m
+[2026-07-04 13:25:29] No majority found. Fallback to previous: 100m
+[2026-07-04 13:25:29] Sensor A failure: Hardware fault in Sensor A
+[2026-07-04 13:25:29] Sensor C failure: Hardware fault in Sensor C
+[2026-07-04 13:25:29] Reliability failure: Insufficient valid sensors.
+[2026-07-04 13:25:29] SAFE MODE ACTIVATED: Two consecutive reliability failures detected.

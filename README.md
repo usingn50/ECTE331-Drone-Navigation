@@ -15,6 +15,8 @@
 - الدخول في وضع السلامة (SAFE MODE) عند فشلين متتاليين في الموثوقية
 - تسجيل كل الأحداث المهمة في ملف `log.txt`
 
+تقرير كامل مع أدلة فعلية من السجل لكل حالة استخدام مطلوبة: `Report_Part1.md`
+
 ## 2. مشروع نظام التحكم بالذراع الروبوتية (Robotic Arm Control System)
 
 **المجلد:** `ECTE331RoboticArm`
@@ -27,7 +29,9 @@
 | 3 | `PriorityInversionDemo.java`, `LowPriorityTask.java`, `MediumPriorityTask.java` | سيناريو متحكَّم فيه يُظهر انعكاس الأولوية (Priority Inversion) بشكل قابل لإعادة الإنتاج |
 | 4 | `MotorController.java` (`PriorityMode.INHERITANCE`) | محاكاة وراثة الأولوية (Priority Inheritance) |
 | 5 | `MotorController.java` (`PriorityMode.CEILING`) | تنفيذ بروتوكول سقف الأولوية (Priority Ceiling) |
-| 6 | `PerformanceEvaluator.java`, `performance_results.csv`, `performance_chart.png`, `Report_Task6_Performance.md` | تقييم أداء الاستراتيجيات الثلاث على 20 تجربة، مع جداول ورسم بياني |
+| 6 | `PerformanceEvaluator.java`, `performance_results.csv`, `performance_chart.png` | تقييم أداء الاستراتيجيات الثلاث على 20 تجربة، مع جداول ورسم بياني |
+
+تقرير كامل يغطي التصميم والمهام 1-6 مع أدلة فعلية من السجلات: `ECTE331RoboticArm/Report_RoboticArm.md`
 
 **ملاحظة منهجية:** بما أن أولويات الخيوط في Java تُعامَل كـ"تلميح" للـ JVM/نظام التشغيل وليست ضمانًا حقيقيًا للجدولة الفورية على أنظمة التشغيل العامة، فقد تم تصميم آلية "تداخل" (`setMediumInterfering`) داخل `MotorController` لمحاكاة تأثير انعكاس الأولوية بشكل حتمي وقابل لإعادة الإنتاج على أي جهاز، بدل الاعتماد الكامل على سلوك المجدول الفعلي — راجع Javadoc الخاص بـ `MotorController` للتفاصيل.
 

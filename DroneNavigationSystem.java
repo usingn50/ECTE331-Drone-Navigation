@@ -15,7 +15,7 @@ public class DroneNavigationSystem {
     private static final String LOG_FILE = "log.txt";
     private static final int FAULT_CHANCE_PERCENT = 15;
     private static final int CORRUPTION_CHANCE_PERCENT = 30;
-    private static final int VOTING_TOLERANCE = 2; // Tolerance in meters for voting
+    private static final int VOTING_TOLERANCE = 0; // Exact-match voting, per spec: "if two valid sensors outputs are equal"
     
     private int lastValidAltitude = 0;
     private int consecutiveFailures = 0;
@@ -44,7 +44,6 @@ public class DroneNavigationSystem {
                 System.out.println("\nIteration: " + i);
                 try {
                     processIteration(logger);
-                    consecutiveFailures = 0; // Reset on success
                 } catch (SystemReliabilityException e) {
                     System.err.println("CRITICAL ERROR: " + e.getMessage());
                     log(logger, "SAFE MODE ACTIVATED: " + e.getMessage());
@@ -98,6 +97,7 @@ public class DroneNavigationSystem {
         Integer result = determineAltitude(readings, valid);
         
         if (result != null) {
+            consecutiveFailures = 0; // Reset only on a genuine successful majority decision
             lastValidAltitude = result;
             System.out.println("Majority Decision: " + result + "m");
             
@@ -155,7 +155,7 @@ public class DroneNavigationSystem {
 
         if (validCount < 2) return null;
 
-        // Check for majority among valid readings with tolerance
+        // Check for majority: two valid readings must match exactly (VOTING_TOLERANCE = 0)
         if (valid[0] && valid[1] && Math.abs(readings[0] - readings[1]) <= VOTING_TOLERANCE) 
             return (readings[0] + readings[1]) / 2;
         if (valid[0] && valid[2] && Math.abs(readings[0] - readings[2]) <= VOTING_TOLERANCE) 
