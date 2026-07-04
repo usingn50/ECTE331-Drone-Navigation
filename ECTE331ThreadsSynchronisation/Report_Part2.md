@@ -1,6 +1,9 @@
 # ECTE331 Project — Part 2 Report
 ## Problem 2: Threads Synchronisation and Communication
 
+**Student:** Ahmed Walid Alaaeldin
+**Student ID:** 7684125
+
 ---
 
 ## a) Final values of the shared variables

@@ -1,6 +1,9 @@
 # ECTE331 Project — Robotic Arm Report
 ## Real-Time Robotic Arm Controller with Priority Management (Tasks 1–6)
 
+**Student:** Ahmed Walid Alaaeldin
+**Student ID:** 7684125
+
 ---
 
 ## 1. System Design

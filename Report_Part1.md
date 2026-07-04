@@ -1,6 +1,9 @@
 # ECTE331 Project — Part 1 Report
 ## Fault-Tolerant Autonomous Drone Navigation System
 
+**Student:** Ahmed Walid Alaaeldin
+**Student ID:** 7684125
+
 ---
 
 ## 1. Introduction

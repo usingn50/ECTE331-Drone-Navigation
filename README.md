@@ -1,84 +1,108 @@
-# ECTE331 - مشاريع أنظمة التشغيل
+# ECTE331 — Operating Systems Projects
 
-يحتوي هذا المستودع على مشاريع متعددة تم تطويرها كجزء من مقرر ECTE331 (أنظمة التشغيل / الأنظمة المدمجة)، مع التركيز على التحمل من الأعطال، إدارة الموارد المشتركة، ومزامنة الخيوط في بيئات متعددة الخيوط.
+**Student:** Ahmed Walid Alaaeldin
+**Student ID:** 7684125
 
-## 1. مشروع نظام الملاحة للطائرات بدون طيار (Drone Navigation System)
+This repository contains three projects developed for the ECTE331 (Operating
+Systems / Real-time Embedded Systems) course, covering fault tolerance, shared
+resource management, and thread synchronization in multi-threaded Java
+applications.
 
-**الملف الرئيسي:** `DroneNavigationSystem.java`
-**الاستثناءات المخصصة:** `SensorReadException.java`, `SystemReliabilityException.java`
+## 1. Fault-Tolerant Autonomous Drone Navigation System
 
-يحاكي هذا المشروع نظام ملاحة لطائرة بدون طيار يعتمد على تقنية التكرار الثلاثي (Triple Modular Redundancy - TMR) لتحديد الارتفاع باستخدام ثلاثة حساسات، مع:
+**Main file:** `DroneNavigationSystem.java`
+**Custom exceptions:** `SensorReadException.java`, `SystemReliabilityException.java`
 
-- محاكاة فشل/تلف/صحة القراءات حسب نسب عشوائية محددة
-- تصويت الأغلبية (Majority Voting) لتحديد القراءة النهائية
-- الرجوع للقيمة السابقة (Fallback) عند تعارض جميع القراءات
-- الدخول في وضع السلامة (SAFE MODE) عند فشلين متتاليين في الموثوقية
-- تسجيل كل الأحداث المهمة في ملف `log.txt`
+Simulates a drone altitude-navigation system using Triple Modular Redundancy
+(TMR) across three sensors, including:
 
-تقرير كامل مع أدلة فعلية من السجل لكل حالة استخدام مطلوبة: `Report_Part1.md`
+- Simulated sensor failure / corrupted reading / valid reading, at the
+  specified probabilities
+- Majority voting (exact-match) to determine the final altitude
+- Fallback to the previous valid altitude when all readings disagree
+- SAFE MODE activation after two consecutive reliability failures
+- Timestamped logging of every required event to `log.txt`
 
-## 2. مشروع نظام التحكم بالذراع الروبوتية (Robotic Arm Control System)
+Full report, with real log evidence for every required use case:
+`Report_Part1.md`
 
-**المجلد:** `ECTE331RoboticArm`
+## 2. Real-Time Robotic Arm Controller with Priority Management
 
-يحاكي هذا المشروع نظام تحكم بذراع روبوتية بثلاثة خيوط ذات أولويات مختلفة (High: `SafetyMonitor`, Medium: `MotionPlanner`, Low: `Logger`) تتشارك موردًا واحدًا (`MotorController`)، ويغطي المتطلبات الستة كاملة:
+**Folder:** `ECTE331RoboticArm`
 
-| Task | الملفات | الوصف |
+Simulates a robotic arm controller with three real-time threads of different
+priorities (High: `SafetyMonitor`, Medium: `MotionPlanner`, Low: `Logger`)
+sharing one resource (`MotorController`). Covers all six required tasks:
+
+| Task | Files | Description |
 |---|---|---|
-| 1-2 | `RoboticArmSystem.java` | تنفيذ أساسي متعدد الخيوط مع إقصاء متبادل (mutual exclusion) على المورد المشترك |
-| 3 | `PriorityInversionDemo.java`, `LowPriorityTask.java`, `MediumPriorityTask.java` | سيناريو متحكَّم فيه يُظهر انعكاس الأولوية (Priority Inversion) بشكل قابل لإعادة الإنتاج |
-| 4 | `MotorController.java` (`PriorityMode.INHERITANCE`) | محاكاة وراثة الأولوية (Priority Inheritance) |
-| 5 | `MotorController.java` (`PriorityMode.CEILING`) | تنفيذ بروتوكول سقف الأولوية (Priority Ceiling) |
-| 6 | `PerformanceEvaluator.java`, `performance_results.csv`, `performance_chart.png` | تقييم أداء الاستراتيجيات الثلاث على 20 تجربة، مع جداول ورسم بياني |
+| 1–2 | `RoboticArmSystem.java` | Basic multi-threaded implementation with mutual exclusion on the shared resource |
+| 3 | `PriorityInversionDemo.java`, `LowPriorityTask.java`, `MediumPriorityTask.java` | Controlled scenario demonstrating priority inversion, reproducibly |
+| 4 | `MotorController.java` (`PriorityMode.INHERITANCE`) | Simulated priority inheritance |
+| 5 | `MotorController.java` (`PriorityMode.CEILING`) | Priority ceiling protocol |
+| 6 | `PerformanceEvaluator.java`, `performance_results.csv`, `performance_chart.png` | Performance evaluation of all three strategies over 20 trials, with tables and a chart |
 
-تقرير كامل يغطي التصميم والمهام 1-6 مع أدلة فعلية من السجلات: `ECTE331RoboticArm/Report_RoboticArm.md`
+Full report covering Tasks 1–6, with real log evidence:
+`ECTE331RoboticArm/Report_RoboticArm.md`
 
-**ملاحظة منهجية:** بما أن أولويات الخيوط في Java تُعامَل كـ"تلميح" للـ JVM/نظام التشغيل وليست ضمانًا حقيقيًا للجدولة الفورية على أنظمة التشغيل العامة، فقد تم تصميم آلية "تداخل" (`setMediumInterfering`) داخل `MotorController` لمحاكاة تأثير انعكاس الأولوية بشكل حتمي وقابل لإعادة الإنتاج على أي جهاز، بدل الاعتماد الكامل على سلوك المجدول الفعلي — راجع Javadoc الخاص بـ `MotorController` للتفاصيل.
+**Methodology note:** Java thread priorities are only a scheduling *hint* to
+the JVM/OS and are not a real-time guarantee on general-purpose operating
+systems. `MotorController` therefore models the medium-priority interference
+deterministically (see its Javadoc) so the experiment is reproducible on any
+machine, rather than depending on OS-specific scheduler behaviour.
 
-## 3. مشروع مزامنة الخيوط والاتصال (Threads Synchronisation and Communication)
+## 3. Threads Synchronisation and Communication
 
-**المجلد:** `ECTE331ThreadsSynchronisation`
+**Folder:** `ECTE331ThreadsSynchronisation`
 
-يحل هذا المشروع "Problem 2" من المقرر: خيطان (A وB) بترتيب تنفيذ محدد بين ست دوال (FuncA1-3, FuncB1-3) تتشارك ست متغيرات، بدون استخدام busy-wait أو `Thread.sleep()` لفرض الترتيب.
+Solves "Problem 2" from the course: two threads (A and B) with a specific
+execution dependency across six functions (FuncA1-3, FuncB1-3) sharing six
+variables, without using busy-wait or `Thread.sleep()` to enforce ordering.
 
-- `SumUtil.java` — دالة مساعدة لحساب المجموع باستخدام حلقة تكرار
-- `SyncEvent.java` — بوابة مزامنة أحادية الاستخدام مبنية على `synchronized`/`wait()`/`notifyAll()`
-- `SharedState.java` — يحمل المتغيرات المشتركة وأحداث المزامنة الأربعة
-- `ThreadA.java`, `ThreadB.java` — تنفيذ الخيطين حسب ترتيب الاعتماد في Figure 2.1
-- `ThreadSyncApp.java` — تشغيل توضيحي + اختبار صحة على 100,000 تكرار متتالي
-- `Report_Part2.md` — تقرير كامل يشرح الحل الرياضي وتصميم المزامنة ونتائج الاختبار
+- `SumUtil.java` — utility method computing the required summation with a loop
+- `SyncEvent.java` — a one-shot synchronization gate built on
+  `synchronized`/`wait()`/`notifyAll()`
+- `SharedState.java` — holds the shared variables and the four synchronization events
+- `ThreadA.java`, `ThreadB.java` — implement the two threads per the
+  dependency order in Figure 2.1
+- `ThreadSyncApp.java` — demonstration run + a 100,000-iteration correctness
+  stress test
+- `Report_Part2.md` — full report explaining the mathematical solution,
+  synchronization design, and test results
 
-## كيفية التشغيل
+## How to run
 
-للتشغيل، تأكد من تثبيت Java Development Kit (JDK 17 أو أحدث).
+Requires a Java Development Kit (JDK 17 or later).
 
-1.  **استنساخ المستودع:**
+1. **Clone the repository:**
     ```bash
     git clone https://github.com/usingn50/ECTE331-Drone-Navigation.git
     cd ECTE331-Drone-Navigation
     ```
 
-2.  **مشروع نظام الملاحة للطائرات بدون طيار:**
+2. **Drone Navigation System:**
     ```bash
     javac DroneNavigationSystem.java SensorReadException.java SystemReliabilityException.java
     java DroneNavigationSystem
     ```
 
-3.  **مشروع نظام التحكم بالذراع الروبوتية:**
+3. **Robotic Arm Controller:**
     ```bash
     javac ECTE331RoboticArm/*.java
-    java -cp . ECTE331RoboticArm.RoboticArmSystem        # Task 1-2: العرض الأساسي
-    java -cp . ECTE331RoboticArm.PriorityInversionDemo    # Task 3-5: عرض انعكاس الأولوية والحلول
-    java -cp . ECTE331RoboticArm.PerformanceEvaluator 20  # Task 6: تقييم الأداء (20 تجربة)
+    java -cp . ECTE331RoboticArm.RoboticArmSystem        # Tasks 1-2: basic demo
+    java -cp . ECTE331RoboticArm.PriorityInversionDemo    # Tasks 3-5: inversion + both protocols
+    java -cp . ECTE331RoboticArm.PerformanceEvaluator 20  # Task 6: performance evaluation
     ```
 
-4.  **مشروع مزامنة الخيوط والاتصال:**
+4. **Threads Synchronisation and Communication:**
     ```bash
     cd ECTE331ThreadsSynchronisation
     javac *.java
     java ThreadSyncApp
     ```
 
-## التوثيق
+## Documentation
 
-يوجد توثيق JavaDoc لمشروع نظام الملاحة في `docs/DroneNavigationSystem`. تقارير كل جزء موجودة كملفات Markdown داخل مجلد كل مشروع.
+JavaDoc for the Drone Navigation project is in `docs/DroneNavigationSystem`.
+Each part's report is a Markdown file inside that part's own folder (or the
+repository root for Part 1).
